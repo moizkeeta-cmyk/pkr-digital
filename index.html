@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKR Digital - PKRS Stablecoin</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #0d1117; color: #ffffff; margin: 0; padding: 0; text-align: center; }
+        header { background: #004B23; padding: 30px 20px; }
+        .logo { font-size: 48px; font-weight: bold; background: white; color: #004B23; display: inline-block; width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin-bottom: 10px; }
+        h1 { margin: 10px 0; font-size: 28px; }
+        p { color: #8b949e; font-size: 16px; }
+        .container { padding: 30px 20px; max-width: 800px; margin: auto; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .btn { background: #26A17B; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; margin: 5px; }
+        .btn:hover { background: #208b69; }
+        .btn-telegram { background: #0088cc; }
+        .btn-telegram:hover { background: #006699; }
+        .payment-box { background: #1c2128; border: 2px dashed #26A17B; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: left; }
+        .payment-box p { color: #ffffff; margin: 8px 0; font-size: 15px; }
+        .highlight { color: #26A17B; font-weight: bold; }
+        .bank-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 15px 0; }
+        .badge { background: #21262d; border: 1px solid #30363d; padding: 8px 15px; border-radius: 20px; font-size: 14px; color: #58a6ff; font-weight: bold; }
+        .usdt-badge { background: #26A17B; color: #ffffff; }
+        .roadmap-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        .roadmap-table th, .roadmap-table td { border: 1px solid #30363d; padding: 8px; text-align: center; }
+        .roadmap-table th { background: #004B23; }
+        .roadmap-table tr:nth-child(even) { background-color: #11161d; }
+        .contract-box { background: #0d1117; padding: 12px; border-radius: 6px; word-break: break-all; font-family: monospace; color: #58a6ff; font-size: 13px; }
+        .ad-container { margin: 20px 0; padding: 10px; background: #161b22; border: 1px dashed #30363d; border-radius: 8px; }
+        .address-box { font-size: 14px; color: #8b949e; margin-top: 20px; line-height: 1.5; }
+        
+        /* Progress Bar Styling */
+        .progress-container { background: #21262d; border-radius: 10px; height: 22px; width: 100%; margin: 12px 0; overflow: hidden; border: 1px solid #30363d; }
+        .progress-bar { background: #26A17B; height: 100%; width: 0%; text-align: center; line-height: 22px; font-size: 12px; font-weight: bold; transition: width 0.5s ease-in-out; }
+
+        /* Calculator Styling */
+        .calc-input { width: 80%; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #fff; margin: 10px 0; font-size: 16px; text-align: center; }
+
+        ol { text-align: left; color: #8b949e; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Rs</div>
+        <h1>PKR Digital (PKRS)</h1>
+        <p>First Decentralized Pakistani Rupee Pegged Asset</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Top Ad Banner (A-ADS Unit 2454543) -->
+        <div class="ad-container">
+            <p style="font-size: 12px; color: #8b949e; margin-bottom: 5px;">Advertisement</p>
+            <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+                <iframe data-aa='2454543' src='//acceptable.a-ads.com/2454543/?size=Adaptive' style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+            </div>
+        </div>
+
+        <!-- Stage 1 Live Presale Progress -->
+        <div class="card">
+            <h2>Stage 1 Live Presale Progress</h2>
+            <p>Stage 1 Rate: <strong>1 PKR = 1 PKRS</strong></p>
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar">0%</div>
+            </div>
+            <p style="font-size: 14px; color: #ffffff;" id="progressText">0 / 100,000 PKRS Sold</p>
+        </div>
+
+        <!-- Token Calculator -->
+        <div class="card">
+            <h2>PKRS Token Calculator</h2>
+            <p>Enter PKR Amount to calculate PKRS tokens:</p>
+            <input type="number" id="pkrInput" class="calc-input" placeholder="Enter PKR Amount" oninput="calculateTokens()" value="1000">
+            <h3 style="color:#26A17B; margin-top:10px;">You Get: <span id="tokenOutput">1000</span> PKRS</h3>
+        </div>
+
+        <!-- About & Quick Links -->
+        <div class="card">
+            <h2>About PKRS</h2>
+            <p>PKRS is a BEP-20 standard utility token designed for fast, low-cost local and international digital transactions.</p>
+            <a href="https://pancakeswap.finance" target="_blank" class="btn">Buy on PancakeSwap</a>
+            <a href="https://t.me/PKRT_Pay_Bot" target="_blank" class="btn btn-telegram">Open Telegram Bot</a>
+        </div>
+
+        <!-- Manual Payment Section -->
+        <div class="card">
+            <h2>Buy PKRS (Pakistani Banks & USDT)</h2>
+            <p>Aap Pakistani Banks, Mobile Wallets ya Direct USDT se PKRS buy kar sakte hain:</p>
+
+            <div class="bank-badges">
+                <span class="badge">EasyPaisa</span>
+                <span class="badge">JazzCash</span>
+                <span class="badge">SadaPay / NayaPay</span>
+                <span class="badge">All Pakistani Banks</span>
+                <span class="badge usdt-badge">USDT (BEP-20)</span>
+            </div>
+
+            <div class="payment-box">
+                <p><strong>Current Active Round:</strong> <span class="highlight">Stage 1</span></p>
+                <p><strong>Stage 1 Price:</strong> <span class="highlight">1 PKR = 1 PKRS</span></p>
+                <p><strong>Stage 1 Total Allocation:</strong> <span class="highlight">100,000 PKRS Tokens</span></p>
+                <p><strong>Bank Account Details:</strong> <span class="highlight">Shared directly on Telegram Bot</span></p>
+            </div>
+
+            <h3 style="margin-top:20px; text-align:left;">Direct USDT (BEP-20) Deposit Address:</h3>
+            <div class="contract-box">0xc997238490f5817cc6cc8c9f11f1b52206bd2cd0</div>
+
+            <h3 style="margin-top:20px; text-align:left;">How to Order:</h3>
+            <ol>
+                <li>Telegram bot par contact karein bank details lene ke liye.</li>
+                <li>Bank Transfer ya USDT Deposit ka <strong>Screenshot / TxID</strong> save karein.</li>
+                <li>Bot par Proof aur apna <strong>Wallet Address</strong> send karein.</li>
+            </ol>
+
+            <a href="https://t.me/PKRT_Pay_Bot" target="_blank" class="btn btn-telegram">Contact Telegram Bot for Payment</a>
+        </div>
+
+        <!-- Bottom Ad Banner (A-ADS Unit 2454543) -->
+        <div class="ad-container">
+            <p style="font-size: 12px; color: #8b949e; margin-bottom: 5px;">Advertisement</p>
+            <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+                <iframe data-aa='2454543' src='//acceptable.a-ads.com/2454543/?size=Adaptive' style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
+            </div>
+        </div>
+
+        <!-- Contract Address Box -->
+        <div class="card">
+            <h2>Token Contract Address</h2>
+            <p>BNB Smart Chain (BEP-20)</p>
+            <div class="contract-box">Coming Soon (Will be updated after contract launch)</div>
+        </div>
+
+        <!-- Presale Tiers & Listing Roadmap Table -->
+        <div class="card">
+            <h2>Presale Tiers & Price Roadmap</h2>
+            <table class="roadmap-table">
+                <tr><th>Stage</th><th>Token Allocation</th><th>Target Price</th><th>Status / Event</th></tr>
+                <tr><td>Stage 1</td><td>100,000 PKRS</td><td>1 PKR</td><td>Active</td></tr>
+                <tr><td>Stage 2</td><td>200,000 PKRS</td><td>2 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 3</td><td>300,000 PKRS</td><td>4 PKR</td><td><strong style="color:#26A17B;">PancakeSwap Pool Launch</strong></td></tr>
+                <tr><td>Stage 4</td><td>400,000 PKRS</td><td>8 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 5</td><td>500,000 PKRS</td><td>16 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 6</td><td>600,000 PKRS</td><td>32 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 7</td><td>700,000 PKRS</td><td>64 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 8</td><td>800,000 PKRS</td><td>128 PKR</td><td>Upcoming</td></tr>
+                <tr><td>Stage 9</td><td>900,000 PKRS</td><td>256 PKR</td><td>Upcoming</td></tr>
+                <tr><td>CEX Listing</td><td>Global Exchange</td><td>280 PKR (1 USDT)</td><td>Final Target (Binance)</td></tr>
+            </table>
+        </div>
+
+        <!-- Physical Office Address -->
+        <div class="card address-box">
+            <h3 style="color:#ffffff; margin-top:0;">Official Head Office</h3>
+            <p>Building 478, 3rd Floor, Office Number 309<br>Sialkot, Pakistan</p>
+            <p>© 2026 PKR Digital Services. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // MANUALLY UPDATE THIS NUMBER WHEN TOKENS SELL:
+        // ==========================================
+        let soldTokens = 0;   // Abhi ke sold tokens
+        let totalTokens = 100000; // Stage 1 Target Allocation (1 Lakh)
+
+        function updateProgressBar() {
+            let percentage = (soldTokens / totalTokens) * 100;
+            if (percentage > 100) percentage = 100;
+            
+            document.getElementById("progressBar").style.width = percentage.toFixed(0) + "%";
+            document.getElementById("progressBar").innerText = percentage.toFixed(0) + "% Sold";
+            document.getElementById("progressText").innerText = soldTokens.toLocaleString() + " / " + totalTokens.toLocaleString() + " PKRS Sold";
+        }
+
+        function calculateTokens() {
+            let pkr = document.getElementById('pkrInput').value;
+            let rate = 1; // Stage 1 Rate = 1 PKR
+            let result = pkr * rate;
+            document.getElementById('tokenOutput').innerText = result ? result.toLocaleString() : 0;
+        }
+
+        updateProgressBar();
+    </script>
+
+</body>
+</html>
